@@ -1,3 +1,5 @@
 class GiftSerializer < ActiveModel::Serializer
-  attributes :id, :name, :price, :list
+  attributes :id, :name, :cost, :list
+
+  belongs_to :list_id
 end
