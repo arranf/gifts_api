@@ -1,5 +1,5 @@
 class GiftsController < ApplicationController
-  before_action :set_gift, only: [:show, :update, :destroy]
+  before_action :set_gift, only: [:show, :update, :destroy, :purchase]
 
   # GET /gifts
   def index
@@ -36,6 +36,14 @@ class GiftsController < ApplicationController
   # DELETE /gifts/1
   def destroy
     @gift.destroy
+  end
+
+  # POST /gifts/1/purchase
+  def purchase
+    unless @gift.purchased
+      @gift.update(purchased: 1)
+    end
+    render json: @gift
   end
 
   private
