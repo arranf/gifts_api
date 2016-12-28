@@ -3,7 +3,7 @@ class ListsController < ApplicationController
 
   # GET /lists
   def index
-    @lists = List.all
+    @lists = List.where(is_private: [false, nil])
 
     render json: @lists
   end
