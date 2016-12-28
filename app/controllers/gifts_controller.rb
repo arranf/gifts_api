@@ -3,8 +3,7 @@ class GiftsController < ApplicationController
 
   # GET /gifts
   def index
-    @gifts = Gift.all
-
+    @gifts = Gift.filter(params.slice(:purchased))
     render json: @gifts
   end
 
